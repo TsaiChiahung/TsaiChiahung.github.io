@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chia-hung Tsai — Political Scientist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a18;
+    --paper: #f5f2eb;
+    --muted: #7a7670;
+    --accent: #8b3a2a;
+    --accent-light: #c4876d;
+    --rule: #d8d3c8;
+    --card: #edeae1;
+    --tag-bg: #e2ddd5;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 clamp(1.5rem, 5vw, 5rem);
+    display: flex; align-items: center; justify-content: space-between;
+    height: 58px;
+  }
+
+  .logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  nav { display: flex; gap: 2rem; }
+  nav a {
+    font-size: 13px; font-weight: 400; letter-spacing: 0.04em;
+    color: var(--muted); text-decoration: none;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--ink); }
+
+  /* ── HERO ── */
+  .hero {
+    padding: clamp(4rem, 8vw, 8rem) clamp(1.5rem, 5vw, 5rem) clamp(3rem, 5vw, 5rem);
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+    align-items: end;
+  }
+
+  .hero-left {}
+  .hero-left .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 1.2rem;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 300; line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+  }
+
+  h1 em {
+    font-style: italic; color: var(--accent);
+    display: block;
+  }
+
+  .hero-bio {
+    font-size: 15px; color: var(--muted); line-height: 1.75;
+    max-width: 38ch; margin-bottom: 2rem;
+  }
+
+  .hero-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn {
+    display: inline-block;
+    padding: 9px 20px;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
+    text-decoration: none; text-transform: uppercase;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn:hover { background: var(--ink); color: var(--paper); }
+  .btn.secondary {
+    border-color: var(--rule); color: var(--muted);
+  }
+  .btn.secondary:hover { border-color: var(--ink); color: var(--ink); background: none; }
+
+  .hero-right {
+    display: flex; flex-direction: column; gap: 1rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .stat-block {
+    border-left: 2px solid var(--accent);
+    padding-left: 1.2rem;
+  }
+  .stat-block .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem; font-weight: 300; line-height: 1;
+    color: var(--ink);
+  }
+  .stat-block .label {
+    font-size: 12px; color: var(--muted);
+    letter-spacing: 0.05em; margin-top: 0.25rem;
+  }
+
+  /* ── DIVIDER ── */
+  .section-rule {
+    max-width: 1100px; margin: 0 auto;
+    padding: 0 clamp(1.5rem, 5vw, 5rem);
+  }
+  .section-rule hr {
+    border: none; border-top: 1px solid var(--rule);
+  }
+
+  /* ── SECTION HEADERS ── */
+  section { max-width: 1100px; margin: 0 auto; padding: clamp(3rem, 5vw, 5rem) clamp(1.5rem, 5vw, 5rem); }
+
+  .section-header {
+    display: flex; align-items: baseline; gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .section-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 300;
+  }
+  .section-header .count {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px; color: var(--muted);
+  }
+
+  /* ── RESEARCH AREAS ── */
+  .areas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .area-card {
+    background: var(--paper);
+    padding: 1.8rem 1.5rem;
+  }
+
+  .area-card .area-icon {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; color: var(--accent-light);
+    letter-spacing: 0.1em; margin-bottom: 1rem;
+  }
+
+  .area-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
+
+  .area-card p {
+    font-size: 13px; color: var(--muted); line-height: 1.6;
+  }
+
+  /* ── PUBLICATIONS ── */
+  .pub-filter {
+    display: flex; gap: 0.5rem; flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .filter-btn {
+    padding: 6px 14px;
+    font-size: 12px; letter-spacing: 0.04em;
+    border: 1px solid var(--rule);
+    background: transparent; cursor: pointer;
+    color: var(--muted);
+    transition: all 0.18s;
+    font-family: 'Outfit', sans-serif;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--ink); color: var(--paper); border-color: var(--ink);
+  }
+
+  .pub-list { display: flex; flex-direction: column; gap: 0; }
+
+  .pub-item {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--rule);
+    display: grid; grid-template-columns: 56px 1fr; gap: 1.5rem;
+    align-items: start;
+    opacity: 1; transition: opacity 0.2s;
+  }
+  .pub-item.hidden { display: none; }
+
+  .pub-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px; color: var(--accent-light);
+    padding-top: 4px;
+  }
+
+  .pub-content {}
+
+  .pub-title {
+    font-size: 15px; font-weight: 400; line-height: 1.45;
+    margin-bottom: 0.4rem; color: var(--ink);
+  }
+
+  .pub-meta {
+    font-size: 12.5px; color: var(--muted);
+    font-style: italic; margin-bottom: 0.6rem;
+  }
+
+  .pub-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 0.06em;
+    background: var(--tag-bg); color: var(--muted);
+  }
+
+  .tag.ssci { background: #ddeedd; color: #3a6840; }
+  .tag.tssci { background: #dde6f5; color: #2f4a7a; }
+  .tag.scopus { background: #f0e8d8; color: #7a5a30; }
+
+  .pub-link {
+    font-size: 11px; color: var(--accent);
+    text-decoration: none; letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--accent-light);
+    margin-left: 0.5rem;
+    white-space: nowrap;
+  }
+
+  /* ── CONTACT ── */
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+  }
+
+  .contact-item { margin-bottom: 1.5rem; }
+  .contact-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 0.3rem;
+  }
+  .contact-value {
+    font-size: 14px; color: var(--ink);
+  }
+  .contact-value a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  .contact-value a:hover { border-color: var(--ink); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.5rem clamp(1.5rem, 5vw, 5rem);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  footer p {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; color: var(--muted); letter-spacing: 0.05em;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    .hero { grid-template-columns: 1fr; gap: 2.5rem; }
+    .contact-grid { grid-template-columns: 1fr; gap: 1rem; }
+    nav { gap: 1.2rem; }
+  }
+
+  /* ── FADE IN ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-left { animation: fadeUp 0.6s ease both; }
+  .hero-right { animation: fadeUp 0.6s 0.15s ease both; }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="#" class="logo">chia-hung tsai</a>
+  <nav>
+    <a href="#research">Research</a>
+    <a href="#publications">Publications</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-left">
+    <p class="eyebrow">Research Fellow · NCCU</p>
+    <h1>Chia-hung<em>Tsai</em></h1>
+    <p class="hero-bio">
+      Director of the Election Study Center at National Chengchi University. 
+      Research focuses on electoral behavior, public opinion, democratic theory, 
+      and Taiwan's place in the Asia-Pacific security order.
+    </p>
+    <div class="hero-links">
+      <a href="https://esc.nccu.edu.tw/PageStaffing/Detail?fid=7389&id=2370" class="btn" target="_blank">ESC Profile</a>
+      <a href="https://github.com/TsaiChiahung" class="btn secondary" target="_blank">GitHub</a>
+      <a href="mailto:tsaich@nccu.edu.tw" class="btn secondary">Email</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stat-block">
+      <div class="num">40+</div>
+      <div class="label">Peer-reviewed publications</div>
+    </div>
+    <div class="stat-block">
+      <div class="num">SSCI<span style="font-size:1.5rem"> / TSSCI</span></div>
+      <div class="label">Indexed journals</div>
+    </div>
+    <div class="stat-block">
+      <div class="num">30</div>
+      <div class="label">Years of research on Taiwan politics</div>
+    </div>
+  </div>
+</div>
+
+<div class="section-rule"><hr></div>
+
+<section id="research">
+  <div class="section-header">
+    <h2>Research Areas</h2>
+  </div>
+  <div class="areas">
+    <div class="area-card">
+      <div class="area-icon">01 ——</div>
+      <h3>Electoral Behavior</h3>
+      <p>Voting decisions, party identification, strategic voting, and electoral accountability in Taiwan and East Asia.</p>
+    </div>
+    <div class="area-card">
+      <div class="area-icon">02 ——</div>
+      <h3>Public Opinion</h3>
+      <p>Survey methodology, cross-national opinion research, measurement theory, and public attitudes toward governance.</p>
+    </div>
+    <div class="area-card">
+      <div class="area-icon">03 ——</div>
+      <h3>Party Politics</h3>
+      <p>Party systems, democratic satisfaction, ideological congruence, and political participation in new democracies.</p>
+    </div>
+    <div class="area-card">
+      <div class="area-icon">04 ——</div>
+      <h3>Security &amp; Foreign Policy</h3>
+      <p>Public alignment orientation under US-China competition, Taiwan's security dilemma, and perceptions of foreign leadership.</p>
+    </div>
+    <div class="area-card">
+      <div class="area-icon">05 ——</div>
+      <h3>American Politics</h3>
+      <p>US congressional behavior, House party leadership, and American voter response to international events.</p>
+    </div>
+    <div class="area-card">
+      <div class="area-icon">06 ——</div>
+      <h3>Quantitative Methods</h3>
+      <p>Bayesian inference, multilevel modeling, conjoint analysis, and panel survey design for political research.</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-rule"><hr></div>
+
+<section id="publications">
+  <div class="section-header">
+    <h2>Selected Publications</h2>
+    <span class="count">Journal Articles</span>
+  </div>
+
+  <div class="pub-filter">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="ssci">SSCI</button>
+    <button class="filter-btn" data-filter="tssci">TSSCI</button>
+    <button class="filter-btn" data-filter="electoral">Electoral Behavior</button>
+    <button class="filter-btn" data-filter="security">Security</button>
+    <button class="filter-btn" data-filter="democracy">Democracy</button>
+  </div>
+
+  <div class="pub-list">
+
+    <div class="pub-item" data-cats="ssci security">
+      <div class="pub-year">2026</div>
+      <div class="pub-content">
+        <div class="pub-title">Public Alignment Orientation under U.S.-China Competition: Hierarchy, Identity, and the Japanese Case</div>
+        <div class="pub-meta">with A.I. Johnston &amp; S. Lin · <em>International Relations of the Asia-Pacific</em></div>
+        <div class="pub-tags"><span class="tag ssci">SSCI</span><span class="tag">Forthcoming</span></div>
+      </div>
+    </div>
+
+    <div class="pub-item" data-cats="ssci democracy">
+      <div class="pub-year">2025</div>
+      <div class="pub-content">
+        <div class="pub-title">Communicative Democracy and Voter Choice: Evidence from A Conjoint Analysis in Taiwan</div>
+        <div class="pub-meta">with C. Wang · <em>Political Studies Review</em>, 23(3), 860–885</div>
+        <div class="pub-tags"><span class="tag ssci">SSCI</span></div>
+      </div>
+    </div>
+
+    <div class="pub-item" data-cats="scopus security">
+      <div class="pub-year">2025</div>
+      <div class="pub-content">
+        <div class="pub-title">Perceptions of Foreign Leadership and Alignment Trade-offs: The Case of Taiwan</div>
+        <div class="pub-meta">with S.H. Lin · <em>Journal of Asian Security and International Affairs</em>, 12(2)</div>
+        <div class="pub-tags"><span class="tag scopus">SCOPUS</span></div>
+      </div>
+    </div>
+
+    <div class="pub-item" data-cats="ssci security">
+      <div class="pub-year">2025</div>
+      <div class="pub-content">
+        <div class="pub-title">Containing the COVID-19 Pandemic under an External Threat: A Case Study of Taiwan</div>
+        <div class="pub-meta">with S. Lin · <em>Political Science Quarterly</em>, 140(1), 63–84</div>
+        <div class="pub-tags"><span class="tag ssci">SSCI</span></div>
+      </div>
+    </div>
+
+    <div class="pub-item" data-cats="ssci democracy">
+      <div class="pub-year">2024</div>
+      <div class="pub-content">
+        <div class="pub-title">Information, Emotion and Direct Democracy: Evidences from A Survey Experiment for Taiwan's Nuclear Power Plant Referendum</div>
+        <div class="pub-meta"><em>Political Science</em>, 76(1), 92–113</div>
+        <div class="pub-tags"><span class="tag ssci">SSCI</span></div>
+      </div>
+    </div>
+
+    <div class="pub-item" data-cats="ssci security">
+      <div class="pub-year">2024</div>
+      <div class="pub-content">
+        <div class="pub-title">Foreign Policy Orientation Without Party Cues: A Case Study of Taiwan</div>
+        <div class="pub-meta">with A.I. Johnston &amp; G. Yin · <em>Asian Survey</em>, 64(4), 635–665</div>
+        <div class="pub-tags"><span class="tag ssci">SSCI</span></div>
+      </div>
+    </div>
+
+    <div class="pub-item" data-cats="ssci democracy">
+      <div class="pub-year">2023</div>
+      <div class="pub-content">
+        <div class="pub-title">Legislative Oversight and Democratic Satisfaction at a Time of Crisis in Taiwan</div>
+        <div class="pub-meta"><em>Taiwan Journal of Democracy</em>, 19(1), 53–77</div>
+        <div class="pub-tags"><span class="tag">Peer-reviewed</span></div>
+      </div>
+    </div>
+
+    <div class="pub-item" data-cats="ssci electoral">
+      <div class="pub-year">2022</div>
+      <div class="pub-content">
+        <div class="pub-title">Explaining Change in Independence–Unification Views in Taiwan: A Within-Between Model</div>
+        <div class="pub-meta">with T. Tsai · <em>Asian Journal of Communication</em>, 32(2), 111–130</div>
+        <div class="pub-tags"><span class="tag ssci">SSCI</span></div>
+      </div>
+    </div>
+
+    <div class="pub-item" data-cats="tssci democracy">
+      <div class="pub-year">2022</div>
+      <div class="pub-content">
+        <div class="pub-title">Ideological Congruence, Perceived Accountability, and Satisfaction with Democracy: Case Studies of Australia and New Zealand</div>
+        <div class="pub-meta">with A. Tan · <em>選舉研究</em>, 29(2), 1–34</div>
+        <div class="pub-tags"><span class="tag tssci">TSSCI</span></div>
+      </div>
+    </div>
+
+    <div class="pub-item" data-cats="ssci electoral">
+      <div class="pub-year">2019</div>
+      <div class="pub-content">
+        <div class="pub-title">Unfolding the Pattern of Contentious Participation in Taiwan</div>
+        <div class="pub-meta"><em>Electoral Studies</em>, 58, 94–102</div>
+        <div class="pub-tags"><span class="tag ssci">SSCI</span></div>
+      </div>
+    </div>
+
+    <div class="pub-item" data-cats="ssci electoral">
+      <div class="pub-year">2005</div>
+      <div class="pub-content">
+        <div class="pub-title">Expected-Utility Voting in Taiwan's Legislative Elections: 1995, 1998, and 2001</div>
+        <div class="pub-meta">with Y. Hsu · <em>International Political Science Review</em>, 26(4), 397–412</div>
+        <div class="pub-tags"><span class="tag ssci">SSCI</span></div>
+      </div>
+    </div>
+
+    <div class="pub-item" data-cats="ssci electoral">
+      <div class="pub-year">2005</div>
+      <div class="pub-content">
+        <div class="pub-title">Policy-Making, Local Factions, and Candidate Coordination in SNTV: A Case Study of Taiwan</div>
+        <div class="pub-meta"><em>Party Politics</em>, 11(1), 59–77</div>
+        <div class="pub-tags"><span class="tag ssci">SSCI</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-rule"><hr></div>
+
+<section id="contact">
+  <div class="section-header"><h2>Contact</h2></div>
+  <div class="contact-grid">
+    <div>
+      <div class="contact-item">
+        <div class="contact-label">Position</div>
+        <div class="contact-value">Research Fellow &amp; Director, Election Study Center<br>National Chengchi University</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label">Email</div>
+        <div class="contact-value"><a href="mailto:tsaich@nccu.edu.tw">tsaich@nccu.edu.tw</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label">Extension</div>
+        <div class="contact-value">50501</div>
+      </div>
+    </div>
+    <div>
+      <div class="contact-item">
+        <div class="contact-label">Institutional Profile</div>
+        <div class="contact-value"><a href="https://esc.nccu.edu.tw/PageStaffing/Detail?fid=7389&id=2370" target="_blank">Election Study Center, NCCU ↗</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label">Code &amp; Data</div>
+        <div class="contact-value"><a href="https://github.com/TsaiChiahung" target="_blank">github.com/TsaiChiahung ↗</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Chia-hung Tsai · National Chengchi University</p>
+  <p>tsaich@nccu.edu.tw</p>
+</footer>
+
+<script>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const pubItems = document.querySelectorAll('.pub-item');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      pubItems.forEach(item => {
+        if (f === 'all') {
+          item.classList.remove('hidden');
+        } else {
+          const cats = item.dataset.cats || '';
+          item.classList.toggle('hidden', !cats.includes(f));
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>
